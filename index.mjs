@@ -21,7 +21,7 @@
 //   lib/tools.mjs           20 个工具的注册（15 导入 + export + sync + 识别/撤回 + 发现）
 //
 // 本文件只做组装：registerTools 注册工具；webServer 是可选且晚挂载的 host 服务，
-// 面板路由经 ctx.inject(['webServer']) 延迟注册（headless / 无 Web 的 profile 不挂载
+// 面板路由与 .jsonl 上传路由经 ctx.inject(['webServer']) 延迟注册（headless / 无 Web 的 profile 不挂载
 // 路由但照常 apply，15 个导入工具与 CLI 会话不受影响）。
 
 import { resolveRegistryDir } from './lib/imports.mjs'

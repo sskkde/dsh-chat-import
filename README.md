@@ -185,7 +185,7 @@ sync_to_claude({ sessionId: "…", target: "copy", dryRun: true })
 
 ### Browser panel — discover & import from the sidebar
 
-The dsh web sidebar shows an **导入会话** button in its footer, styled to match the sidebar's **设置** entry and carrying the plugin logo as its icon (a `sidebar.footer.action` slot entry: while the official Cordis plugin badge occupies the whole footer row the button renders as a fixed overlay just above the footer so it can never be squeezed out; when the badge is hidden or absent it sits in the footer row itself, right above 设置). It opens a panel listing discovered sessions **grouped by workspace folder** (each source's `cwd`/project when available, otherwise an "(未分组)" bucket), with a source filter — "全部来源" scans every format's default data root, a single source restricts the view — and a per-session import-status badge (已导入 / 部分 / 未导入). A search box filters by title / workspace / path, and the list is **paginated** (50 per page) with selections kept across pages for bulk operations. The panel closes on `Escape`.
+The dsh web sidebar shows an **导入会话** button in its footer, styled to match the sidebar's **设置** entry and carrying the plugin logo as its icon (a `sidebar.footer.action` slot entry: while the official Cordis plugin badge occupies the whole footer row the button renders as a fixed overlay just above the footer so it can never be squeezed out; when the badge is hidden or absent it sits in the footer row itself, right above 设置). It opens a panel listing discovered sessions **grouped by workspace folder** (each source's `cwd`/project when available, otherwise an "(未分组)" bucket), with a source filter — "全部来源" scans every format's default data root, a single source restricts the view — and a per-session import-status badge (已导入 / 部分 / 未导入). A search box filters by title / workspace / path, and the list is **paginated** (50 per page) with selections kept across pages for bulk operations. The panel closes on `Escape`. Its header now has an "Upload Session Logs" button: chosen local `.jsonl` files are uploaded in 640 KiB chunks into the current workspace `.dsh-import-uploads/` (halving adaptively on `413`), then imported through the `local-jsonl` auto-detect pipeline.
 
 Each row supports **single import**, and the checkboxes enable **multi-select import** ("导入所选 (N)"): the panel calls the same host import pipeline as the `import_*` tools, so idempotent skip / incremental append / `force` / context-budget semantics are identical, and the list refreshes with the new statuses after importing. A multi-session source (e.g. `conversations.json`, an opencode/zcode/hermes DB) is imported whole — opencode/zcode restrict to the selected `sessionId`s.
 
@@ -242,7 +242,7 @@ lib/
 
 ## ⚙️ Compatibility
 
-Targets the `dsh 0.1.x` line (`dsh-tools ^0.1.0-rc.6`, tested on `dsh 0.1.0-rc.6`) and requires **Node.js >= 22.13** (the first release where `node:sqlite` is available without a flag). `npm test` — 391 cases.
+Targets the `dsh 0.1.x` line (`dsh-tools ^0.1.0-rc.6`, tested on `dsh 0.1.0-rc.6`) and requires **Node.js >= 22.13** (the first release where `node:sqlite` is available without a flag). `npm test` — 394 cases.
 
 ---
 

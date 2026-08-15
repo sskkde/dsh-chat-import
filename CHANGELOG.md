@@ -13,6 +13,15 @@ Release dates are the npm publish timestamps in Asia/Shanghai (UTC+8).
 
 ### Added
 
+- **Browser panel upload button** — the sidebar import panel now has an
+  "Upload Session Logs" button: pick local `.jsonl` files, the client uploads
+  them in 640 KiB chunks to `POST /api-import/upload` (adaptive halving on
+  `413`, suitable behind a 1 MiB reverse-proxy body limit) into the session
+  workspace's `.dsh-import-uploads/`, then imports each file through the
+  `local-jsonl` auto-detect pipeline. Only `.jsonl` names are accepted,
+  paths/control characters are stripped, transfers are swept after 30 min.
+  `npm test` — 394 cases.
+
 - **Local JSONL session-file import (auto-detect)** — new
   `import_local_jsonl` tool accepts any local `.jsonl` file or directory and
   auto-detects the transcript structure across `dsh` / `claude` / `codex` /
